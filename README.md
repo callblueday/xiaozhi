@@ -1,2 +1,0 @@
-# xiaozhi
-AI小智 
