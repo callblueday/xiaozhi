@@ -36,3 +36,6 @@ https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_i
 http://vop.baidu.com/server_api?lan=zh&cuid=callblueday&token=24.61399cfb279ea95aee1d9ea4ddbfb478.2592000.1484758685.282335-9085373
 
 ```
+
+3. 语音合成
+http://tsn.baidu.com/text2audio?tex=你好&lan=zh&cuid=callblueday&ctp=1&tok=24.61399cfb279ea95aee1d9ea4ddbfb478.2592000.1484758685.282335-9085373
