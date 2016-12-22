@@ -36,6 +36,11 @@ http://vop.baidu.com/server_api?lan=zh&cuid=callblueday&token=24.61399cfb279ea95
 3. 语音合成，实现录音，将文件存储起来
 http://tsn.baidu.com/text2audio?tex=你好&lan=zh&cuid=callblueday&ctp=1&tok=24.61399cfb279ea95aee1d9ea4ddbfb478.2592000.1484758685.282335-9085373
 
+
 ### POST 上传
 使用 [node-request](https://github.com/request/request) 来处理。
 
+
+### tuling
+APIkey: 6d8b646def4745e6a84bf2990d4cbc1d
+secret: 3d3ab24b80e93be9
