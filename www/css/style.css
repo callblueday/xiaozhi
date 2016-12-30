@@ -1,0 +1,9 @@
+#tuling-info {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  margin: 1rem 0;
+}

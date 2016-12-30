@@ -1,11 +1,25 @@
 ## cases
 ### done
 - [x]百度语音-文字转语音网页实现
+- [x] nodejs 的 POST 方式获取信息
+- [x] nodejs 实现的串口通信 node-serialport，websocket
+- [x] 通过串口，硬件 -> 串口 -> web 联调
+- [x]图灵机器人的信息对话
 
 ### todo
 - 录音，并存储文件
 - node POST 方式模拟上传
 - 百度语音识别 demo
+
 - threeJs 加载虚拟3D人物
-- []图灵机器人的信息对话
+  - 加载静态3D
+  - 加载3D图形眼睛要能跟着动
+  - 加载3D图形嘴巴要能动
+  - 通过手势来完成一个转动web中3D球的案例(https://threejs.org/examples/#webgl_clipping_advanced)。重点是在手势交互和threejs的接口上。实体控制虚拟。X轴，Y轴，Z轴（仅仅是放大缩小都可以）
+    - https://threejs.org/examples/#webgl_clipping_intersection
+  - https://threejs.org/examples/#webgl_exporter_obj  可以通过手势切换，变换不同的形状，能导出obj，与3D打印联合
+  - https://threejs.org/examples/#webgl_geometry_nurbs 切换颜色很酷
+- 摄像头识别手势
+  - X轴，Y轴，Z轴的识别。陀螺仪也可以，与 curi 结合，硬件的成本更低
+- 识别唇语，读取信息
 - websocket

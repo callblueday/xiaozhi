@@ -1,18 +1,29 @@
-var express = require('express')
-var app = express()
+var http = require('http');
+var express = require('express');
+var sio = require('socket.io');
+var path = require('path');
+var Tuling = require('./server/tulingInfo');
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!')
-// })
 
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!')
-// })
-
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
-app.post('/upload', multipartMiddleware, function(req, resp) {
-  console.log(req.body, req.files);
-  // don't forget to delete all req.files when done
+var app = express();
+app.use(express.static(path.join(__dirname, 'www')));
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + 'www/index.html');
 });
 
+
+/**
+ * 建立http服务器
+ */
+var httpServer = http.createServer(app);
+httpServer.listen(3002, function() {
+    console.log('node server start at http://127.0.0.1:3002');
+});
+
+
+var io = require('socket.io').listen(httpServer);
+
+io.sockets.on('connection', function (socket) {
+  console.log('socket opened');
+  var tuling = new Tuling(socket);
+});
