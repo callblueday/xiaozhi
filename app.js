@@ -2,7 +2,8 @@ var http = require('http');
 var express = require('express');
 var sio = require('socket.io');
 var path = require('path');
-var Tuling = require('./server/tulingInfo');
+var Tuling = require('./server/TulingInfo');
+var UserInfo = require('./server/UserInfo');
 
 
 var app = express();
@@ -26,4 +27,9 @@ var io = require('socket.io').listen(httpServer);
 io.sockets.on('connection', function (socket) {
   console.log('socket opened');
   var tuling = new Tuling(socket);
+  doAfterSocketConnection(socket)
 });
+
+function doAfterSocketConnection(socket) {
+  socket.emit('userinfo', UserInfo);
+}

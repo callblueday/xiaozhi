@@ -4,7 +4,6 @@ Tuling = function(socket) {
   this.socket = socket;
   var that = this;
 
-
   this.getInfo = function(message) {
     // 根据输入，从图灵拿查询信息
     request.post({
@@ -19,7 +18,7 @@ Tuling = function(socket) {
       }
       // 获取从图灵取回的信息
       console.log(body);
-      var info = JSON.parse(body).text;
+      var info = JSON.parse(body);
       that.socket.emit('tulingResponse', info);
     })
   };
@@ -27,7 +26,6 @@ Tuling = function(socket) {
   this.socket.on("tulingRequest", function(info) {
     that.getInfo(info);
   });
-
 };
 
 
