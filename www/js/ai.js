@@ -42,7 +42,7 @@ socket.on("tulingResponse", function(info) {
     //   $('#list').show().append(item);
     // }
 
-    var index = parseInt(info.list.length - 1 * Math.random());
+    var index = parseInt((info.list.length - 1) * Math.random());
     $('#imgs').show().attr("src", info.list[index].detailurl);
   }
 });
