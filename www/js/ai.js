@@ -15,6 +15,16 @@ function textToSpeech(text) {
   audio.play();
 }
 
+function getLocation() {
+  var location = {
+    "city": "深圳",
+    "loc": '深圳市西丽366大街',
+    "lon":"119.239293",
+    "lat":"39.45492",
+  };
+  return location;
+}
+
 socket.on("tulingResponse", function(info) {
   $('.pre-show').hide();
   var message = null;
@@ -47,21 +57,27 @@ socket.on("tulingResponse", function(info) {
   }
 });
 
-socket.on("userinfo", function(info) {
-  userInfo = info;
-});
-
 // textToSpeech("呵呵");
 
 $(function() {
+  var location = getLocation();
+  var data = {};
+
   $('.info').on('click', function() {
     var val = $('#talk').val();
 
-    if(val.indexOf('天气') != -1) {
-      val += (" " + userInfo.location);
+    if(val.indexOf('天气') != -1 || val.indexOf('电影') != -1) {
+      val += (" " + location.city);
+    }
+
+    if(val.indexOf('餐厅') != -1 || val.indexOf('酒店') != -1) {
+      data.loc = location.loc;
+      data.lon = location.lon;
+      data.lat = location.lat;
     }
 
     // 向服务器通信
-    socket.emit("tulingRequest", val);
+    data.info = val;
+    socket.emit("tulingRequest", data);
   });
 })

@@ -31,5 +31,5 @@ io.sockets.on('connection', function (socket) {
 });
 
 function doAfterSocketConnection(socket) {
-  socket.emit('userinfo', UserInfo);
+
 }
