@@ -10,7 +10,6 @@
 - 录音，并存储文件
 - node POST 方式模拟上传
 - 百度语音识别 demo
-
 - threeJs 加载虚拟3D人物
   - 加载静态3D
   - 加载3D图形眼睛要能跟着动
@@ -19,7 +18,8 @@
     - https://threejs.org/examples/#webgl_clipping_intersection
   - https://threejs.org/examples/#webgl_exporter_obj  可以通过手势切换，变换不同的形状，能导出obj，与3D打印联合
   - https://threejs.org/examples/#webgl_geometry_nurbs 切换颜色很酷
-- 摄像头识别手势
+- 摄像头识别手势（intel 的 real sensor）
   - X轴，Y轴，Z轴的识别。陀螺仪也可以，与 curi 结合，硬件的成本更低
+- 出来一个球，用手势来操控，缩进
 - 识别唇语，读取信息
 - websocket
