@@ -1,5 +1,60 @@
 html, body {
   height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: '微软雅黑', sans-serif;
+}
+
+.warpper {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.board {
+  flex: 2;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.board input {
+  display: inline-block;
+  min-width: 90%;
+  font-size: 1.3rem;
+  height: 2rem;
+  padding: 5px;
+}
+
+.board .info {
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  line-height: 120px;
+  margin-top: 5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border: 0;
+  background: #e67e22;
+  color: #fff;
+  font-family: "Open Sans Condensed";
+}
+
+.board .music {
+  margin-top: 1rem;
+}
+.board .music button {
+
+}
+
+.stage {
+  flex: 5;
+  background: #000;
+  color: #fff;
+  padding: 2rem;
 }
 
 header {
@@ -7,13 +62,8 @@ header {
 }
 
 #txt {
-  width: 100%;
-  min-height: 100px;
-  border: 1px solid #ddd;
-  padding: 10px;
   font-size: 1.3rem;
   line-height: 2rem;
-  margin: 1rem 0;
 }
 
 .pre-show {

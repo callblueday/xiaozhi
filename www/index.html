@@ -3,24 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>AI xiaozhi</title>
-  <link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="vendors/jquery-2.1.3.min.js"></script>
-  <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
   <script src="vendors/socket.io-1.3.7.js"></script>
   <script src="js/ai.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h3>Hello 小智</h3>
-    <div id="txt"></div>
-    <input type="text" id="talk" value="餐厅">
-    <button class="info">ASK</button>
+  <div class="warpper">
+    <div class="board">
+      <h3>Hello 小智</h3>
+      <input type="text" id="talk" value="来一首好听的音乐"> <br>
+      <button class="info">ASK</button>
 
-    <iframe class="pre-show" id="imgs" src="" frameborder="0"></iframe>
-    <table id="list" class="pre-show">
+      <div class="opts">
+        <div class="music">
+          <button id="pre">pre</button>
+          <button id="next">next</button>
+          <button id="playOrStop">stop / play</button>
+        </div>
+      </div>
+    </div>
 
-    </table>
+    <!-- stage -->
+    <div class="stage">
+      <div class="mode">Music</div>
+      <div id="txt"></div>
+      <iframe class="pre-show" id="imgs" src="" frameborder="0"></iframe>
+      <table id="list" class="pre-show"></table>
+
+      <!-- <iframe class="pre-show" id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=5252342&auto=1&height=66"></iframe> -->
+    </div>
+
+
+
+
   </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 var socket = io.connect('127.0.0.1:3002');
 var userInfo = null;
+var mode = "tuling";
 
 function textToSpeech(text) {
   var zhText = text;
@@ -57,11 +58,44 @@ socket.on("tulingResponse", function(info) {
   }
 });
 
-// textToSpeech("呵呵");
+function setMode(modeName) {
+  $('.mode').val(mode);
+  console.log(1);
+  if(modeName == "music") {
+    registerMusicEvents();
+  }
+}
+
+function registerMusicEvents() {
+  $('#pre').on('click', function() {
+    socket.emit("music", {
+      opt: 'pre'
+    });
+  });
+
+  $('#next').on('click', function() {
+    socket.emit("music", {
+      opt: 'next'
+    });
+  });
+
+  $('#playOrStop').on('click', function() {
+    socket.emit("music", {
+      opt: 'playOrStop'
+    });
+  });
+}
+
+function removeMusicEvents() {
+
+}
 
 $(function() {
+  var level = 0; // 0表示图灵，1表示其他
   var location = getLocation();
   var data = {};
+
+  setMode(mode);
 
   $('.info').on('click', function() {
     var val = $('#talk').val();
@@ -76,8 +110,23 @@ $(function() {
       data.lat = location.lat;
     }
 
+    // 音乐
+    if(val.indexOf('来一首') != -1) {
+      setMode('music');
+      level = 1;
+      data.opt = "open";
+    }
+    if(val.indexOf('关闭') != -1) {
+      level = 1;
+      data.opt = "close";
+    }
+
     // 向服务器通信
     data.info = val;
-    socket.emit("tulingRequest", data);
+    if(level == 0) {
+      socket.emit("tulingRequest", data);
+    } else if(level == 1) {
+      socket.emit("music", data);
+    }
   });
 })

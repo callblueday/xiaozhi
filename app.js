@@ -3,7 +3,7 @@ var express = require('express');
 var sio = require('socket.io');
 var path = require('path');
 var Tuling = require('./server/TulingInfo');
-var UserInfo = require('./server/UserInfo');
+var Music = require('./server/Music');
 
 
 var app = express();
@@ -31,5 +31,5 @@ io.sockets.on('connection', function (socket) {
 });
 
 function doAfterSocketConnection(socket) {
-
+  var music = new Music(socket);
 }
