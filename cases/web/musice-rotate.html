@@ -1,0 +1,43 @@
+<style>
+  @-webkit-keyframes circle{
+    0%{
+      transform:rotate(0deg);
+    }
+    100%{
+      transform:rotate(360deg);
+    }
+  }
+  .rotate {
+    -webkit-animation: circle 10s infinite linear;
+  }
+  .u-cover {
+    margin: 8rem auto;
+    width: 198px;
+    height: 198px;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+  .u-cover img {
+    width: 130px;
+    height: 130px;
+    margin: 34px;
+  }
+  .msk {
+    position: absolute;
+    width: 206px;
+    height: 205px;
+    top: -4px;
+    left: -4px;
+    background: url(../../www/images/singlecover.png) no-repeat;
+}
+</style>
+
+
+<div class="music-wrapper">
+  <div class="u-cover rotate">
+    <img src="http://p3.music.126.net/fkqFqMaEt0CzxYS-0NpCog==/18587244069235039.jpg?param=130y130" alt="">
+    <span class="msk"></span>
+  </div>
+  <div class="song-name"></div>
+</div>
