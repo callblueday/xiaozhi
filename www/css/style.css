@@ -83,6 +83,10 @@ header {
 }
 
 /* 音乐唱片 */
+.music-wrapper {
+  display: none;
+}
+
 @-webkit-keyframes circle{
   0%{
     transform:rotate(0deg);

@@ -49,12 +49,14 @@ function Music(socket) {
       .type('#kw', that.songName)
       .click('#su')
       .wait('a.c-btn.op-musicsongs-select-btn')
-      .click('a.c-btn.op-musicsongs-select-btn')
+      // 直接 click 会启动窗口
+      // .click('a.c-btn.op-musicsongs-select-btn')
       .evaluate(function () {
         return document.querySelector('a.c-btn.op-musicsongs-select-btn').href;
       })
       // .end()
       .then(function (result) {
+        that.socket.emit('song', result);
         console.log(result);
       })
       .catch(function (error) {

@@ -1,6 +1,6 @@
 var socket = io.connect('127.0.0.1:3002');
 var userInfo = null;
-var mode = "tuling";
+var mode = "Tuling";
 
 function textToSpeech(text) {
   var zhText = text;
@@ -58,9 +58,17 @@ socket.on("tulingResponse", function(info) {
   }
 });
 
+// 查询到音乐信息
+socket.on('song', function(data) {
+  console.log(data);
+  $('.music-wrapper').fadeIn();
+
+  var musicDom = '<iframe class="pre-show" id="music" src="' + data + '" frameborder="0"></iframe>';
+  $('.stage').append(musicDom);
+});
+
 function setMode(modeName) {
-  $('.mode').text(mode);
-  console.log(1);
+  $('.mode').text(modeName);
   if(modeName == "music") {
     registerMusicEvents();
   }
@@ -115,10 +123,16 @@ $(function() {
       setMode('music');
       level = 1;
       data.opt = "open";
+    } else {
+      setMode('Tuling');
     }
+
     if(val.indexOf('关闭') != -1) {
-      level = 1;
-      data.opt = "close";
+      level = 0;
+      $('.music-wrapper').fadeOut();
+      // 关闭音乐
+      $('iframe#music').remove();
+      return;
     }
 
     // 向服务器通信
