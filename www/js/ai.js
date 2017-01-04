@@ -59,7 +59,7 @@ socket.on("tulingResponse", function(info) {
 });
 
 function setMode(modeName) {
-  $('.mode').val(mode);
+  $('.mode').text(mode);
   console.log(1);
   if(modeName == "music") {
     registerMusicEvents();
