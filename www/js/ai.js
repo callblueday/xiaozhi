@@ -62,8 +62,9 @@ socket.on("tulingResponse", function(info) {
 socket.on('song', function(data) {
   console.log(data);
   $('.music-wrapper').fadeIn();
+  $('.song-name').text(data.songName);
 
-  var musicDom = '<iframe class="pre-show" id="music" src="' + data + '" frameborder="0"></iframe>';
+  var musicDom = '<iframe class="pre-show" id="music" src="' + data.songUrl + '" frameborder="0"></iframe>';
   $('.stage').append(musicDom);
 });
 
@@ -127,7 +128,7 @@ $(function() {
       setMode('Tuling');
     }
 
-    if(val.indexOf('关闭') != -1) {
+    if(val.indexOf('off') != -1) {
       level = 0;
       $('.music-wrapper').fadeOut();
       // 关闭音乐

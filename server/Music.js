@@ -9,8 +9,26 @@ function Music(socket) {
   this.socket = socket;
   this.songName = null;
 
+  this.favorSongList = [
+    "秋音",
+    "夜的钢琴曲五",
+    // "Summer",
+    "阳光明媚的早晨我迟到了",
+    "早晨的月亮",
+    "I Believe",
+    "菊次郎的夏天",
+    "风中的蒲公英",
+    "Childhood Memory",
+    "卡农",
+    "一人静",
+    "Leaves in the Wind",
+    "Careless Whisper",
+    "不要独臂"
+  ];
+
+
   this.socket.on("music", function(data) {
-    that.songName = data.info && data.info.split(" ")[1] || "夜的钢琴曲五";
+    that.songName = data.info && data.info.split(" ")[1] || that.favorSongList[parseInt(Math.random() * (that.favorSongList.length - 1))];
     var opt = data.opt;
 
     switch(data.opt) {
@@ -56,8 +74,11 @@ function Music(socket) {
       })
       // .end()
       .then(function (result) {
-        that.socket.emit('song', result);
-        console.log(result);
+        var data = {};
+        data.songUrl = result;
+        data.songName = that.songName;
+        that.socket.emit('song', data);
+        console.log(data);
       })
       .catch(function (error) {
         console.error('Search failed:', error);

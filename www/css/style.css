@@ -72,6 +72,9 @@ header {
   line-height: 2rem;
   margin: 2rem 0;
   text-align: center;
+  // font-family: "SimSun", "宋体", "Helvetica Neue","Helvetica","Arial","PingFang SC","Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
+  letter-spacing: 1px;
 }
 
 .pre-show {
@@ -85,6 +88,7 @@ header {
 /* 音乐唱片 */
 .music-wrapper {
   display: none;
+  text-align: center;
 }
 
 @-webkit-keyframes circle{
