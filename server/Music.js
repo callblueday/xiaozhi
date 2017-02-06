@@ -29,6 +29,7 @@ function Music(socket) {
 
   this.socket.on("music", function(data) {
     that.songName = data.info && data.info.split(" ")[1] || that.favorSongList[parseInt(Math.random() * (that.favorSongList.length - 1))];
+    console.log(that.songName);
     var opt = data.opt;
 
     switch(data.opt) {

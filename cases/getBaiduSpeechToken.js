@@ -1,6 +1,4 @@
-var http = require('http');
-
-var qs = require('querystring');
+var request = require('request');
 
 var post_data = {
   grant_type: 'client_credentials',
@@ -8,31 +6,23 @@ var post_data = {
   client_secret: 'b95a72265a14b193e02fa33b55c948f6'
 };
 
-var content = qs.stringify(post_data);
-
-var options = {
-  hostname: 'https://openapi.baidu.com',
-  path: 'oauth/2.0/token',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+request.post({
+  url:'https://openapi.baidu.com/oauth/2.0/token',
+  "Content-Type": "application/json",
+  formData: post_data
+}, function optionalCallback(err, httpResponse, body) {
+  if (err) {
+    return console.error('upload failed:', err);
   }
-};
-
-var req = http.request(options, function (res) {
-  console.log('STATUS: ' + res.statusCode);
-  console.log('HEADERS: ' + JSON.stringify(res.headers));
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
-  });
+  console.log(body);
 });
 
-req.on('error', function (e) {
-  console.log('problem with request: ' + e.message);
-});
 
-// write data to request body
-req.write(content);
-
-req.end();
+// {
+//   "access_token": "24.2e46c39d7c905d0d43e40a4f873997df.2592000.1488987125.282335-9085373",
+//   "session_key": "9mzdCXNIl2t0puqhJxFr5SGBZcCVMwU6vOoD0FLwZetwdsGoWjvXu/qvXSpfCBCC546nJCxypO6D5wr3T2OgF+babJZ6",
+//   "scope": "public audio_voice_assistant_get audio_tts_post wise_adapt lebo_resource_base lightservice_public hetu_basic lightcms_map_poi kaidian_kaidian wangrantest_test wangrantest_test1 bnstest_test1 bnstest_test2 ApsMisTest_Test权限",
+//   "refresh_token": "25.8d681835bcc61bd43d72bd4ee8798d77.315360000.1801755125.282335-9085373",
+//   "session_secret": "67e5bf1175085815f57e427095096557",
+//   "expires_in": 2592000
+// }
