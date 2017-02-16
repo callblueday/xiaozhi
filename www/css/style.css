@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: '微软雅黑', sans-serif;
+  background: #000;
 }
 
 .warpper {
@@ -24,10 +25,14 @@ html, body {
 .board input {
   display: inline-block;
   min-width: 90%;
-  font-size: 1.3rem;
+  font-size: 1rem;
   height: 2rem;
-  padding: 5px;
+  padding: 0.3rem 0.5rem;
   outline: none;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #333;
 }
 
 .board .info {
