@@ -3,7 +3,9 @@ var videoElement = null;
 
 var Message = {
   receiveVoice: function(msg) {
+
     $('.box').text(msg);
+    resizeText();
     if(openChart) {
       requestTulingMsg(msg);
     }
@@ -46,9 +48,10 @@ var Message = {
     }
 
     if(msg.indexOf("播放") != -1 || msg.indexOf("初音") != -1 || msg.indexOf("来一段") != -1) {
+      $('.box').hide();
       var src = "../media/chuyin.mp4";
       videoElement = '<video id="my-video" class="video-js" controls autoPlay preload="auto" width="100%" height="100%" data-setup="{}"><source src="' + src + '" type="video/mp4"></video>'
-      $('body').append($(videoElement));
+      $('.wrapper').append($(videoElement));
     }
 
     switch(msg) {
@@ -74,7 +77,7 @@ var Message = {
       case '开灯':
       case '灯':
         MBlockly.Control.setMbotLed(255, 0,0, 0);
-        $('body').css("background", "#f00")
+        $('.wrapper').css("background", "#f00")
         break;
       case '关灯':
         MBlockly.Control.setMbotLed(0, 0, 0, 0);
@@ -91,25 +94,25 @@ var Message = {
         break;
       case '走你':
       case '找你':
-        $('body').css("backgroundColor",'#f00');
+        $('.wrapper').css("backgroundColor",'#f00');
         break;
       case '恢复':
       case '回复':
-        $('body').css("backgroundColor",'#000')
+        $('.wrapper').css("backgroundColor",'#000')
         break;
       case '全息图':
         $('.box').hide();
-        $('body').css("background",'url(../../images/maxresdefault.jpg) no-repeat center 100%');
+        $('.wrapper').css("background",'url(../../images/maxresdefault.jpg) no-repeat center');
         break;
       case '小时':
       case '消失':
         $('.box').hide();
-        $('body').css("background",'url()');
+        $('.wrapper').css("background",'url()');
         break;
       default:
         $('.box').show();
-        $('body').css("backgroundColor",'#000')
-        $('body').css("background",'url()');
+        $('.wrapper').css("backgroundColor",'#000')
+        $('.wrapper').css("background",'url()');
         break;
     }
   }
@@ -117,4 +120,13 @@ var Message = {
 
 function showMbot() {
 
+}
+setTimeout(function() {
+  resizeText();
+}, 0);
+
+function resizeText() {
+  var left = -($('.box-down').width() / 2) + 'px';
+  $('.box-down').css("marginLeft", left);
+  $('.box-up').css("marginLeft", left);
 }
