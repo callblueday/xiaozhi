@@ -1,30 +1,58 @@
-var openSpeech = false;
+var openChart = false;
 var videoElement = null;
 
 var Message = {
   receiveVoice: function(msg) {
     $('.box').text(msg);
-    if(openSpeech) {
-      textToSpeech(msg);
+    if(openChart) {
+      requestTulingMsg(msg);
+    }
+
+    if(msg.indexOf("闭嘴") != -1) {
+      textToSpeech(false);
+    }
+
+    if(msg.indexOf("退出") != -1 || msg.indexOf("退了") != -1) {
+      textToSpeech('成功退出');
+      if(mode) { openChart = false;}
+      if(videoElement) {
+        $('#my-video').remove();
+      }
+    }
+
+    if(msg.indexOf("退了没有") != -1) {
+      textToSpeech('已经退出了，不要再问了');
+    }
+
+    if(msg.indexOf("疯狂聊天") != -1  || msg.indexOf("聊个天") != -1 || msg.indexOf("聊天模式") != -1 || msg.indexOf("说个话") != -1) {
+      textToSpeech('进入互聊模式');
+      if(mode) { openChart = true;}
+    }
+
+    if(msg.indexOf("叫") != -1 || msg.indexOf("我靠") != -1) {
+      MBlockly.Control.playTone("C6", 255);
+    }
+
+    if(msg.indexOf("停") != -1) {
+      MBlockly.Action.runSpeed(0, 1);
+    }
+
+    if(msg.indexOf("镜像") != -1) {
+      $('.wrapper').removeClass("wrapper-all-show").addClass("wrapper-mirror");
+    }
+
+    if(msg.indexOf("分屏") != -1) {
+      $('.wrapper').removeClass("wrapper-mirror").addClass("wrapper-all-show");
+    }
+
+    if(msg.indexOf("播放") != -1 || msg.indexOf("初音") != -1 || msg.indexOf("来一段") != -1) {
+      var src = "../media/chuyin.mp4";
+      videoElement = '<video id="my-video" class="video-js" controls autoPlay preload="auto" width="100%" height="100%" data-setup="{}"><source src="' + src + '" type="video/mp4"></video>'
+      $('body').append($(videoElement));
     }
 
     switch(msg) {
-
-      case '视频':
-        var src = "../media/chuyin.mp4";
-        videoElement = '<video id="my-video" class="video-js" controls autoPlay preload="auto" width="100%" height="100%" data-setup="{}"><source src="' + src + '" type="video/mp4"></video>'
-        $('body').append($(videoElement));
-        break;
-      case '退出':
-        if(videoElement) {
-          $('#my-video').remove();
-        }
-        break;
-      case '聊天':
-        if(mode) { openSpeech = true;}
-        break;
       case '前':
-      case '钱':
       case '前进':
         MBlockly.Action.runSpeed(255, 1);
         break;
@@ -42,12 +70,6 @@ var Message = {
       case '有':
       case '右转':
         MBlockly.Action.turnSpeed(255, -1);
-        break;
-      case '停止':
-      case '零':
-      case '婷':
-      case '停':
-        MBlockly.Action.runSpeed(0, 1);
         break;
       case '开灯':
       case '灯':
@@ -82,12 +104,6 @@ var Message = {
       case '消失':
         $('.box').hide();
         $('body').css("background",'url()');
-        break;
-      case '镜像模式':
-        $('.wrapper').removeClass("wrapper-all-show").addClass("wrapper-mirror");
-        break;
-      case '分屏模式':
-        $('.wrapper').removeClass("wrapper-mirror").addClass("wrapper-all-show");
         break;
       default:
         $('.box').show();

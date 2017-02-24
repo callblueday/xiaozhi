@@ -3,6 +3,9 @@ var userInfo = null;
 var mode = "null";
 
 function textToSpeech(text) {
+  if(!text) {
+    return;
+  }
   var zhText = text;
   // 文本长度必须小于1024字节
   zhText = encodeURI(zhText);
@@ -75,73 +78,69 @@ function setMode(modeName) {
   }
 }
 
-function registerMusicEvents() {
-  $('#pre').on('click', function() {
-    socket.emit("music", {
-      opt: 'pre'
-    });
-  });
 
-  $('#next').on('click', function() {
-    socket.emit("music", {
-      opt: 'next'
-    });
-  });
-
-  $('#playOrStop').on('click', function() {
-    socket.emit("music", {
-      opt: 'playOrStop'
-    });
-  });
+/* 查询图灵信息 */
+function requestTulingMsg(msg) {
+  var data = {
+    info: msg
+  };
+  socket.emit("tulingRequest", data);
 }
 
-function removeMusicEvents() {
-
-}
-
-$(function() {
-  var level = 0; // 0表示图灵，1表示其他
-  var location = getLocation();
+function requestMusic(state) {
   var data = {};
+  if(state) {
+    data.opt = "open";
+  } else {
+    data.opt = "close";
+  }
+  socket.emit("music", data);
+}
 
-  setMode(mode);
 
-  $('.info').on('click', function() {
-    var val = $('#talk').val();
+// $(function() {
+//   var level = 0; // 0表示图灵，1表示其他
+//   var location = getLocation();
+//   var data = {};
 
-    if(val.indexOf('天气') != -1 || val.indexOf('电影') != -1) {
-      val += (" " + location.city);
-    }
+//   setMode(mode);
 
-    if(val.indexOf('餐厅') != -1 || val.indexOf('酒店') != -1) {
-      data.loc = location.loc;
-      data.lon = location.lon;
-      data.lat = location.lat;
-    }
+//   $('.info').on('click', function() {
+//     var val = $('#talk').val();
 
-    // 音乐
-    if(val.indexOf('来一首') != -1) {
-      setMode('music');
-      level = 1;
-      data.opt = "open";
-    } else {
-      setMode('Tuling');
-    }
+//     if(val.indexOf('天气') != -1 || val.indexOf('电影') != -1) {
+//       val += (" " + location.city);
+//     }
 
-    if(val.indexOf('off') != -1) {
-      level = 0;
-      $('.music-wrapper').fadeOut();
-      // 关闭音乐
-      $('iframe#music').remove();
-      return;
-    }
+//     if(val.indexOf('餐厅') != -1 || val.indexOf('酒店') != -1) {
+//       data.loc = location.loc;
+//       data.lon = location.lon;
+//       data.lat = location.lat;
+//     }
 
-    // 向服务器通信
-    data.info = val;
-    if(level == 0) {
-      socket.emit("tulingRequest", data);
-    } else if(level == 1) {
-      socket.emit("music", data);
-    }
-  });
-})
+//     // 音乐
+//     if(val.indexOf('来一首') != -1) {
+//       setMode('music');
+//       level = 1;
+//       data.opt = "open";
+//     } else {
+//       setMode('Tuling');
+//     }
+
+//     if(val.indexOf('off') != -1) {
+//       level = 0;
+//       $('.music-wrapper').fadeOut();
+//       // 关闭音乐
+//       $('iframe#music').remove();
+//       return;
+//     }
+
+//     // 向服务器通信
+//     data.info = val;
+//     if(level == 0) {
+//       socket.emit("tulingRequest", data);
+//     } else if(level == 1) {
+//       socket.emit("music", data);
+//     }
+//   });
+// })
