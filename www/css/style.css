@@ -84,11 +84,11 @@ html, body {
 .wrapper-mirror .box-up {
   transform: rotate(-180deg);
   color: #ffff08;
-  left: -6rem;
+  left: 6rem;
   top: -12rem;
 }
 .wrapper-mirror .box-up .text {
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  // transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .wrapper-mirror .box-down {
@@ -98,21 +98,42 @@ html, body {
 }
 
 .wrapper-mirror .box-left {
+  color: transparent;
+  text-shadow: none;
   transform: rotate(90deg);
   left: -14rem;
-  top: 7rem;
+  top: 0;
+  background: #ccc;
+  width: 1rem;
 }
 .wrapper-mirror .box-left .text {
-  color: rebeccapurple;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  color: transparent;
+  text-shadow: none;
 }
 
 .wrapper-mirror .box-right {
+  color: transparent;
+  text-shadow: none;
   transform: rotate(-90deg);
-   right: -7rem;
-    top: -5rem;
+  right: -7rem;
+  top: 0;
+  background: #ccc;
+  width: 1rem;
 }
 .wrapper-mirror .box-right .text {
-  color: blue;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  color: transparent;
+  text-shadow: none;
+}
+
+
+/* video */
+#my-video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
 }

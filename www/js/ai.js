@@ -1,6 +1,6 @@
 var socket = io.connect('192.168.11.212:3002');
 var userInfo = null;
-var mode = "Tuling";
+var mode = "null";
 
 function textToSpeech(text) {
   var zhText = text;
@@ -59,14 +59,14 @@ socket.on("tulingResponse", function(info) {
 });
 
 // 查询到音乐信息
-socket.on('song', function(data) {
-  console.log(data);
-  $('.music-wrapper').fadeIn();
-  $('.song-name').text(data.songName);
+// socket.on('song', function(data) {
+//   console.log(data);
+//   $('.music-wrapper').fadeIn();
+//   $('.song-name').text(data.songName);
 
-  var musicDom = '<iframe class="pre-show" id="music" src="' + data.songUrl + '" frameborder="0"></iframe>';
-  $('.stage').append(musicDom);
-});
+//   var musicDom = '<iframe class="pre-show" id="music" src="' + data.songUrl + '" frameborder="0"></iframe>';
+//   $('.stage').append(musicDom);
+// });
 
 function setMode(modeName) {
   $('.mode').text(modeName);
