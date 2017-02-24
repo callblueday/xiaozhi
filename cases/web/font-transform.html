@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+
+      body {
+        background: #000;
+        color: #fff;
+      }
+
+      .wrapper {
+        position: relative;
+        width: 20rem;
+        height: 20rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -10rem;
+        margin-top: -10rem;
+      }
+      .box {
+        font-size: 4rem;
+        position: absolute;
+        /*background: #ddd;*/
+        width: 8rem;
+        height: 4rem;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 4rem;
+      }
+
+      .box-up, .box-down {
+        margin-left: -2rem;
+      }
+
+      .box-left, .box-right {
+        /*width: 8rem;
+        height: 4rem;*/
+      }
+
+      .box-up {
+        left: 8rem;
+        top: 0;
+        -webkit-transform: rotate(-90deg);
+      }
+
+      .box-down {
+        left: 8rem;
+        bottom: 0;
+        -webkit-transform: rotate(90deg);
+      }
+
+      .box-left {
+        -webkit-transform: rotate(-180deg);
+        left: 0;
+        top: 8rem;
+      }
+
+      .box-right {
+        right: 0;
+        top: 8rem;
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="box box-up">Makeblock1</div>
+  <div class="box box-down">Makeblock2</div>
+  <div class="box box-left">Makeblock3</div>
+  <div class="box box-right">Makeblock4</div>
+</div>
+
+</body>
+</html>

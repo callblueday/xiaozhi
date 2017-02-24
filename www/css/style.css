@@ -5,9 +5,10 @@ html, body {
   margin: 0;
   font-family: '微软雅黑', sans-serif;
   background: #000;
+  color: #fff;
 }
 
-.box {
+.box-text {
   width: 30rem;
   height: 13rem;
   margin: 4rem auto;
@@ -17,3 +18,101 @@ html, body {
   font-size: 4rem;
 }
 
+.wrapper {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -10rem;
+  margin-top: -10rem;
+}
+
+.box {
+  font-size: 4rem;
+  position: absolute;
+  width: 8rem;
+  height: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 4rem;
+  text-shadow: -4px 0px 4px #FFE;
+  margin-left: 6rem;
+  margin-top: 8rem;
+}
+
+/* mirror-all-show */
+.wrapper-all-show .box-up {
+  transform: rotate(-180deg);
+  color: #ffff08;
+  left: -6rem;
+  top: -12rem;
+}
+.wrapper-all-show .box-up .text {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.wrapper-all-show .box-down {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  left: 6rem;
+  bottom: -6rem;
+}
+
+.wrapper-all-show .box-left {
+  transform: rotate(90deg);
+      left: -14rem;
+    top: 7rem;
+}
+.wrapper-all-show .box-left .text {
+  color: rebeccapurple;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.wrapper-all-show .box-right {
+  transform: rotate(-90deg);
+   right: -7rem;
+    top: -5rem;
+}
+.wrapper-all-show .box-right .text {
+  color: blue;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+
+/* wrapper-mirror */
+.wrapper-mirror .box-up {
+  transform: rotate(-180deg);
+  color: #ffff08;
+  left: -6rem;
+  top: -12rem;
+}
+.wrapper-mirror .box-up .text {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.wrapper-mirror .box-down {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  left: 6rem;
+  bottom: -6rem;
+}
+
+.wrapper-mirror .box-left {
+  transform: rotate(90deg);
+  left: -14rem;
+  top: 7rem;
+}
+.wrapper-mirror .box-left .text {
+  color: rebeccapurple;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.wrapper-mirror .box-right {
+  transform: rotate(-90deg);
+   right: -7rem;
+    top: -5rem;
+}
+.wrapper-mirror .box-right .text {
+  color: blue;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
