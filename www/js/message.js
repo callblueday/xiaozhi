@@ -74,6 +74,7 @@ var Message = {
       case '开灯':
       case '灯':
         MBlockly.Control.setMbotLed(255, 0,0, 0);
+        $('body').css("background", "#f00")
         break;
       case '关灯':
         MBlockly.Control.setMbotLed(0, 0, 0, 0);
