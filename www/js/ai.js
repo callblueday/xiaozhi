@@ -1,4 +1,4 @@
-var socket = io.connect('127.0.0.1:3002');
+var socket = io.connect('192.168.11.212:3002');
 var userInfo = null;
 var mode = "Tuling";
 

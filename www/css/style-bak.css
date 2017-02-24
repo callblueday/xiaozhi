@@ -1,0 +1,133 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: '微软雅黑', sans-serif;
+  background: #000;
+}
+
+.warpper {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.board {
+  flex: 2;
+  // border-right: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.board input {
+  display: inline-block;
+  min-width: 90%;
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0.3rem 0.5rem;
+  outline: none;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #333;
+}
+
+.board .info {
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  line-height: 120px;
+  margin-top: 5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border: 0;
+  background: #e67e22;
+  color: #fff;
+  font-family: "Open Sans Condensed";
+  outline: none;
+}
+
+.board .music {
+  margin-top: 1rem;
+}
+.board .music button {
+
+}
+
+.stage {
+  flex: 5;
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+}
+
+.stage .mode {
+  color: #999;
+}
+
+header {
+  display: none!important;
+}
+
+#txt {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  // font-family: "SimSun", "宋体", "Helvetica Neue","Helvetica","Arial","PingFang SC","Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
+  letter-spacing: 1px;
+}
+
+.pre-show {
+  margin-top: 1rem;
+  min-height: 400px;
+  width: 100%;
+  height: 80%;
+  display: none;
+}
+
+/* 音乐唱片 */
+.music-wrapper {
+  display: none;
+  text-align: center;
+}
+
+@-webkit-keyframes circle{
+  0%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+.rotate {
+  -webkit-animation: circle 10s infinite linear;
+}
+.u-cover {
+  margin: 8rem auto;
+  width: 198px;
+  height: 198px;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.u-cover img {
+  width: 130px;
+  height: 130px;
+  margin: 34px;
+}
+.msk {
+  position: absolute;
+  width: 206px;
+  height: 205px;
+  top: -4px;
+  left: -4px;
+  background: url(../images/singlecover.png) no-repeat;
+}
+
