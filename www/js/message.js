@@ -41,7 +41,7 @@ function analyse(msg) {
       return;
     }
 
-    if(msg.indexOf("园园") != -1 || msg.indexOf("圆圆") != -1 || msg.indexOf("媛媛") != -1) {
+    if(msg.indexOf("元元") != -1 || msg.indexOf("园园") != -1 || msg.indexOf("圆圆") != -1 || msg.indexOf("媛媛") != -1) {
       var src = "../images/yangyuan.png";
       showPic(src);
       return;
