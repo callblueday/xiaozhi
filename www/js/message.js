@@ -4,43 +4,54 @@ var canReceiveVoice = true;
 
 var Message = {
   receiveVoice: function(msg) {
-    // if(!canReceiveVoice) {
-    //   return false;
-    // }
+    if(!canReceiveVoice) {
+      return false;
+    }
     analyse(msg);
   }
 };
 
 function analyse(msg) {
-    $('.pic').hide();
+
     $('.box').text(msg);
     resizeText();
 
-    if(msg.indexOf("开始") != -1) {
+    canReceiveVoice = false;
+    setTimeout(function() {
+      canReceiveVoice = true;
+    }, 1000);
+
+    if(msg.indexOf("开始") != -1 || msg.indexOf("小智") != -1 || msg.indexOf("小志") != -1) {
       textToSpeech('大家好，我是小智');
       var src = "../images/xiaozhi.png";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("婷婷") != -1) {
       var src = "../images/tingting.png";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("景洪") != -1 || msg.indexOf("进洪") != -1 || msg.indexOf("金红") != -1 ||
       msg.indexOf("惊鸿") != -1) {
       var src = "../images/jh.png";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("园园") != -1 || msg.indexOf("圆圆") != -1 || msg.indexOf("媛媛") != -1) {
       var src = "../images/yangyuan.png";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("公司") != -1) {
+      textToSpeech('Makeblock 创客工场');
       var src = "../images/logo.gif";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("天气") != -1) {
@@ -84,6 +95,7 @@ function analyse(msg) {
     if(msg.indexOf("全息") != -1) {
       var src = "../../images/quanxitu.jpg";
       showPic(src);
+      return;
     }
 
     if(msg.indexOf("退了没有") != -1 || msg.indexOf("退出没有") != -1) {
@@ -173,6 +185,7 @@ function analyse(msg) {
         $('.box').show();
         $('.wrapper').css("backgroundColor",'#000')
         $('.wrapper').css("background",'url()');
+        $('.pic').hide();
         break;
     }
 }
