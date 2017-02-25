@@ -8,13 +8,54 @@ var Message = {
     //   return false;
     // }
     analyse(msg);
-
   }
 };
 
 function analyse(msg) {
+    $('.pic').hide();
     $('.box').text(msg);
     resizeText();
+
+    if(msg.indexOf("开始") != -1) {
+      textToSpeech('大家好，我是小智');
+      var src = "../images/xiaozhi.png";
+      showPic(src);
+    }
+
+    if(msg.indexOf("婷婷") != -1) {
+      var src = "../images/tingting.png";
+      showPic(src);
+    }
+
+    if(msg.indexOf("景洪") != -1 || msg.indexOf("进洪") != -1 || msg.indexOf("金红") != -1 ||
+      msg.indexOf("惊鸿") != -1) {
+      var src = "../images/jh.png";
+      showPic(src);
+    }
+
+    if(msg.indexOf("园园") != -1 || msg.indexOf("圆圆") != -1 || msg.indexOf("媛媛") != -1) {
+      var src = "../images/yangyuan.png";
+      showPic(src);
+    }
+
+    if(msg.indexOf("公司") != -1) {
+      var src = "../images/logo.gif";
+      showPic(src);
+    }
+
+    if(msg.indexOf("天气") != -1) {
+      textToSpeech('今天阴有小雨');
+      var src = "../images/yu.gif";
+      showPic(src);
+      return;
+    }
+
+    if(msg.indexOf("m") != -1) {
+      textToSpeech('呼唤 mbot');
+      var src = "../images/mbot.gif";
+      showPic(src);
+      return;
+    }
 
     if(msg.indexOf("聊天") != -1 || msg.indexOf("疯狂聊天") != -1  || msg.indexOf("聊个天") != -1 || msg.indexOf("聊天模式") != -1 || msg.indexOf("说个话") != -1) {
       textToSpeech('进入互聊模式');
@@ -41,8 +82,8 @@ function analyse(msg) {
     }
 
     if(msg.indexOf("全息") != -1) {
-      $('.wrapper').css("backgroundImage",'url(../../images/quanxitu.jpg)!important');
-      $('.box').hide();
+      var src = "../../images/quanxitu.jpg";
+      showPic(src);
     }
 
     if(msg.indexOf("退了没有") != -1 || msg.indexOf("退出没有") != -1) {
@@ -147,4 +188,16 @@ function resizeText() {
   var left = -($('.box-down').width() / 2) + 'px';
   $('.box-down').css("marginLeft", left);
   $('.box-up').css("marginLeft", left);
+}
+
+function showPic(src) {
+  $('.pic').attr("src", src).show();
+
+  setTimeout(function() {
+    var mleft = -$('.pic').width() / 2 + 'px';
+    var mtop = -$('.pic').height() / 2 + 'px';
+    $('.pic').css("margin-left", mleft);
+    $('.pic').css("margin-top", mtop);
+    $('.box').hide();
+  }, 50);
 }

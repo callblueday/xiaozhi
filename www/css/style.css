@@ -22,6 +22,17 @@ html, body {
   background-position: center;
 }
 
+.wrapper .pic {
+  position: absolute;
+  max-width: 150%;
+  max-height: 150%;
+  border: 0;
+  outline: none;
+  left: 50%;
+  top: 50%;
+  display: none;
+}
+
 .box {
   font-size: 2.4rem;
   position: absolute;
