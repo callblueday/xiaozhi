@@ -10,10 +10,10 @@ html, body {
 
 .wrapper {
   position: relative;
-  width: 20rem;
-  height: 20rem;
-  margin-left: -10rem;
-  margin-top: -10rem;
+  width: 24rem;
+  height: 24rem;
+  margin-left: -12rem;
+  margin-top: -12rem;
   position: absolute;
   left: 50%;
   top: 50%;

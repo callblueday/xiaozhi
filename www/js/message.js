@@ -212,5 +212,5 @@ function showPic(src) {
     $('.pic').css("margin-left", mleft);
     $('.pic').css("margin-top", mtop);
     $('.box').hide();
-  }, 50);
+  }, 100);
 }
