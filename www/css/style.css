@@ -17,8 +17,9 @@ html, body {
   position: absolute;
   left: 50%;
   top: 50%;
-  // border: 1px solid #ddd;
   background-size: 100%!important;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .box {
@@ -37,42 +38,42 @@ html, body {
   transform-origin: 50% 50%;
 }
 
-// /* mirror-all-show */
-// .wrapper-all-show .box-up {
-//   transform: rotate(-180deg);
-//   color: #ffff08;
-//   left: -6rem;
-//   top: -12rem;
-// }
-// .wrapper-all-show .box-up .text {
-//   transform: matrix(-1, 0, 0, 1, 0, 0);
-// }
+/* mirror-all-show */
+.wrapper-all-show .box-up {
+  transform: rotate(-180deg);
+  color: #ffff08;
+  left: -6rem;
+  top: -12rem;
+}
+.wrapper-all-show .box-up .text {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
 
-// .wrapper-all-show .box-down {
-//   transform: matrix(-1, 0, 0, 1, 0, 0);
-//   left: 6rem;
-//   bottom: -6rem;
-// }
+.wrapper-all-show .box-down {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  left: 6rem;
+  bottom: -6rem;
+}
 
-// .wrapper-all-show .box-left {
-//   transform: rotate(90deg);
-//       left: -14rem;
-//     top: 7rem;
-// }
-// .wrapper-all-show .box-left .text {
-//   color: rebeccapurple;
-//   transform: matrix(-1, 0, 0, 1, 0, 0);
-// }
+.wrapper-all-show .box-left {
+  transform: rotate(90deg);
+      left: -14rem;
+    top: 7rem;
+}
+.wrapper-all-show .box-left .text {
+  color: rebeccapurple;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
 
-// .wrapper-all-show .box-right {
-//   transform: rotate(-90deg);
-//    right: -7rem;
-//     top: -5rem;
-// }
-// .wrapper-all-show .box-right .text {
-//   color: blue;
-//   transform: matrix(-1, 0, 0, 1, 0, 0);
-// }
+.wrapper-all-show .box-right {
+  transform: rotate(-90deg);
+  right: -7rem;
+  top: -5rem;
+}
+.wrapper-all-show .box-right .text {
+  color: blue;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
 
 
 /* wrapper-mirror */
@@ -82,7 +83,7 @@ html, body {
   color: #fff;
 }
 .wrapper-mirror .box-up .text {
-  // transform: matrix(-1, 0, 0, 1, 0, 0);
+  /*transform: matrix(-1, 0, 0, 1, 0, 0);*/
 }
 
 .wrapper-mirror .box-down {
@@ -96,7 +97,7 @@ html, body {
   text-shadow: none;
   transform: rotate(90deg);
   background: #ccc;
-  width: 1rem;
+  width: 0.2rem;
   top: 50%;
   margin-top: -2rem;
 }
@@ -110,7 +111,7 @@ html, body {
   text-shadow: none;
   transform: rotate(-90deg);
   background: #ccc;
-  width: 1rem;
+  width: 0.2rem;
   top: 50%;
   right: 0;
   margin-top: -2rem;

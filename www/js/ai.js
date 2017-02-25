@@ -6,6 +6,10 @@ function textToSpeech(text) {
   if(!text) {
     return;
   }
+
+  var speechTime = text.length * 500;
+
+
   var zhText = text;
   // 文本长度必须小于1024字节
   zhText = encodeURI(zhText);
@@ -15,8 +19,14 @@ function textToSpeech(text) {
   var pit = 7;
 
   var audioSrc = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=" + spd + "&text="+ zhText;
-  var audio = new Audio(audioSrc);
+  audio = new Audio(audioSrc);
+  console.log(audio);
   audio.play();
+  // canReceiveVoice = false;
+  // setTimeout(function() {
+  //   canReceiveVoice = true;
+  // }, speechTime);
+
 }
 
 function getLocation() {

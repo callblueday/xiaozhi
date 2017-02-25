@@ -1,38 +1,60 @@
 var openChart = false;
 var videoElement = null;
+var canReceiveVoice = true;
 
 var Message = {
   receiveVoice: function(msg) {
+    // if(!canReceiveVoice) {
+    //   return false;
+    // }
+    analyse(msg);
 
+  }
+};
+
+function analyse(msg) {
     $('.box').text(msg);
     resizeText();
-    if(openChart) {
-      requestTulingMsg(msg);
-    }
 
-    if(msg.indexOf("闭嘴") != -1) {
-      textToSpeech(false);
+    if(msg.indexOf("聊天") != -1 || msg.indexOf("疯狂聊天") != -1  || msg.indexOf("聊个天") != -1 || msg.indexOf("聊天模式") != -1 || msg.indexOf("说个话") != -1) {
+      textToSpeech('进入互聊模式');
+      if(mode) { openChart = true;}
     }
 
     if(msg.indexOf("退出") != -1 || msg.indexOf("退了") != -1) {
       textToSpeech('成功退出');
-      if(mode) { openChart = false;}
+
+      // canReceiveVoice = false;
+      // setTimeout(function() {
+      //   canReceiveVoice = true;
+      // }, 50);
+
+      openChart = false;
       if(videoElement) {
         $('#my-video').remove();
       }
     }
 
-    if(msg.indexOf("退了没有") != -1) {
+    if(openChart) {
+      // 聊天模式
+      requestTulingMsg(msg);
+    }
+
+    if(msg.indexOf("全息") != -1) {
+      $('.wrapper').css("backgroundImage",'url(../../images/quanxitu.jpg)!important');
+      $('.box').hide();
+    }
+
+    if(msg.indexOf("退了没有") != -1 || msg.indexOf("退出没有") != -1) {
       textToSpeech('已经退出了，不要再问了');
     }
 
-    if(msg.indexOf("疯狂聊天") != -1  || msg.indexOf("聊个天") != -1 || msg.indexOf("聊天模式") != -1 || msg.indexOf("说个话") != -1) {
-      textToSpeech('进入互聊模式');
-      if(mode) { openChart = true;}
+    if(msg.indexOf("叫") != -1) {
+      MBlockly.Control.playTone("C6", 255);
     }
 
-    if(msg.indexOf("叫") != -1 || msg.indexOf("我靠") != -1) {
-      MBlockly.Control.playTone("C6", 255);
+    if(msg.indexOf("大声") != -1 || msg.indexOf("我靠") != -1) {
+      MBlockly.Control.playTone("C7", 1000);
     }
 
     if(msg.indexOf("停") != -1) {
@@ -47,11 +69,15 @@ var Message = {
       $('.wrapper').removeClass("wrapper-mirror").addClass("wrapper-all-show");
     }
 
-    if(msg.indexOf("播放") != -1 || msg.indexOf("初音") != -1 || msg.indexOf("来一段") != -1) {
+    if(msg.indexOf("视频") != -1 || msg.indexOf("播放") != -1 || msg.indexOf("初音") != -1 || msg.indexOf("来一段") != -1) {
       $('.box').hide();
-      var src = "../media/chuyin.mp4";
-      videoElement = '<video id="my-video" class="video-js" controls autoPlay preload="auto" width="100%" height="100%" data-setup="{}"><source src="' + src + '" type="video/mp4"></video>'
+      var src = "../media/chuyin2.mp4";
+      videoElement = '<video id="my-video" class="video-js" autoPlay preload="auto" width="100%" height="100%" data-setup="{}"><source src="' + src + '" type="video/mp4"></video>'
       $('.wrapper').append($(videoElement));
+    }
+
+    if(msg.indexOf("关灯") != -1) {
+      MBlockly.Control.setMbotLed(0, 0, 0, 0);
     }
 
     switch(msg) {
@@ -79,9 +105,6 @@ var Message = {
         MBlockly.Control.setMbotLed(255, 0,0, 0);
         $('.wrapper').css("background", "#f00")
         break;
-      case '关灯':
-        MBlockly.Control.setMbotLed(0, 0, 0, 0);
-        break;
       case '黄':
       case '黄色':
       case '黄光':
@@ -100,10 +123,6 @@ var Message = {
       case '回复':
         $('.wrapper').css("backgroundColor",'#000')
         break;
-      case '全息图':
-        $('.box').hide();
-        $('.wrapper').css("background",'url(../../images/maxresdefault.jpg) no-repeat center');
-        break;
       case '小时':
       case '消失':
         $('.box').hide();
@@ -115,8 +134,7 @@ var Message = {
         $('.wrapper').css("background",'url()');
         break;
     }
-  }
-};
+}
 
 function showMbot() {
 
