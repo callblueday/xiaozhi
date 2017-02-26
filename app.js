@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
  */
 var httpServer = http.createServer(app);
 httpServer.listen(3002, function() {
-    console.log('node server start at 192.168.11.212:3002');
+    console.log('node server start at 10.0.1.19:3002');
 });
 
 

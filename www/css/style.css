@@ -22,6 +22,8 @@ html, body {
   background-position: center;
 }
 
+
+
 .wrapper .pic {
   position: absolute;
   max-width: 150%;
@@ -143,3 +145,13 @@ html, body {
   width: 100%;
   height: 100%;
 }
+
+/*@media screen and (min-width: 766px)  {
+  .wrapper {
+    width: 35rem;
+    height: 35rem;
+  }
+  .text {
+    font-size: 4rem;
+  }
+}*/

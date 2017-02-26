@@ -47,8 +47,15 @@ function analyse(msg) {
       return;
     }
 
-    if(msg.indexOf("公司") != -1) {
+    if(msg.indexOf("公司") != -1 || msg.indexOf("boss") != -1) {
       textToSpeech('Makeblock 创客工场');
+      var src = "../images/logo.gif";
+      showPic(src);
+      return;
+    }
+
+    if(msg.indexOf("帅") != -1) {
+      textToSpeech('Jasen');
       var src = "../images/logo.gif";
       showPic(src);
       return;
