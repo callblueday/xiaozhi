@@ -1,4 +1,4 @@
-var socket = io.connect('10.0.1.19:3002');
+var socket = io.connect('10.0.0.237:3002');
 var userInfo = null;
 var mode = "null";
 
