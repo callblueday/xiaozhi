@@ -23,7 +23,6 @@ html, body {
 }
 
 
-
 .wrapper .pic {
   position: absolute;
   max-width: 150%;
@@ -132,6 +131,11 @@ html, body {
 .wrapper-mirror .box-right .text {
   color: transparent;
   text-shadow: none;
+}
+
+/* mirror-180 */
+.wrapper-mirror-180 .box {
+
 }
 
 /* video */

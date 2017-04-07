@@ -4,7 +4,7 @@ var sio = require('socket.io');
 var path = require('path');
 var Tuling = require('./server/TulingInfo');
 var Music = require('./server/Music');
-
+var getIp = require('./js/getIp');
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'www')));
@@ -17,13 +17,17 @@ app.get('/', function (req, res) {
  * 建立http服务器
  */
 var httpServer = http.createServer(app);
-httpServer.listen(3002, function() {
-    console.log('node server start at 10.0.1.19:3002');
+
+var port = 3002;
+httpServer.listen(port, function() {
+  var ipList = getIp();
+  for(var i in ipList) {
+    console.log('http://' + ipList[i] + ":" + port);
+  }
 });
 
 
 var io = require('socket.io').listen(httpServer);
-
 io.sockets.on('connection', function (socket) {
   console.log('socket opened');
   var tuling = new Tuling(socket);
